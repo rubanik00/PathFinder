@@ -32,18 +32,20 @@ static void mx_create_set(char ***set, char ***arrarr, char *numOfIsland) {
     while (*arr) {
         if (mx_isdigit(**arr)) arr++;
         int j = 0, flag = 0;
-        while(set1[j]) {
-            if (mx_strcmp(*arr, set1[j]) == 0) {   
-                arr++, flag++;
-                break;
+        if (*arr) {
+            while(set1[j]) {
+                if (mx_strcmp(*arr, set1[j]) == 0) {   
+                    arr++, flag++;
+                    break;
+                }
+                j++;
             }
-            j++;
+            if (flag == 0) {
+                set1[i] = mx_strdup(*arr);
+                i++;
+            }
+            arr++;
         }
-        if (flag == 0) {
-            set1[i] = mx_strdup(*arr);
-            i++;
-        }
-        arr++;
     }
     set1[i] = NULL;
 } //24
@@ -102,6 +104,7 @@ void mx_parse(char *argv) {
     mx_create_arr(src, &arrarr);
     mx_create_set(&set, &arrarr, src[0]);
     matrix = mx_matrix(arrarr, set);
-    mx_print_matrix(matrix, set); //Priint Mat
+    //mx_print_matrix(matrix, set); //Priint Mat
+    mx_main_algoritm (matrix, set); // Algoritm
     mx_strdel(&fd);
-} //11
+} //
