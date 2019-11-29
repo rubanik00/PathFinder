@@ -8,7 +8,7 @@ static void mx_print_invalid(int n) {
     mx_printerr(index);
     mx_printerr(" isn't valid\n");
     exit(EXIT_FAILURE);
-}
+} // 8
 
 static void mx_checklines(char **src, int n) {
     while (n > 0) {
@@ -26,7 +26,7 @@ static void mx_checklines(char **src, int n) {
             mx_print_invalid(n);
         n--;       
     }
-}
+} // 16
 
 static void mx_parserr(char *s) {
     char **src = mx_strsplit(s, '\n');
@@ -45,7 +45,7 @@ static void mx_parserr(char *s) {
     n -= 1;
     mx_checklines(src, n);
     mx_del_strarr(&src);
-}
+} // 17
 
 void mx_test_err(int argc, char *src[]) {
     char *file_str = NULL;
@@ -58,7 +58,7 @@ void mx_test_err(int argc, char *src[]) {
     if (!file_str) {
         mx_printerr("error:  file ");
         mx_printerr(src[1]);
-        mx_printerr(" doesn't exist\n");
+        mx_printerr(" does not exist\n");
         exit(EXIT_FAILURE);
     }
     if (mx_strlen(file_str) == 0) {

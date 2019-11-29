@@ -25,26 +25,27 @@ static int mx_count_island(char **arr, char *numOfIsland) {
 static void mx_create_set(char ***set, char ***arrarr, char *numOfIsland) {
     char **arr = *arrarr;
     int i = 0;
+    int j = 0;
+    int flag = 0;
     int count = mx_count_island(arr, numOfIsland);
     *set = (char **)malloc((count + 1) * sizeof(char *));
     char **set1 = *set;
 
     while (*arr) {
         if (mx_isdigit(**arr)) arr++;
-        int j = 0, flag = 0;
+        j = 0, flag = 0;
         if (*arr) {
             while(set1[j]) {
                 if (mx_strcmp(*arr, set1[j]) == 0) {   
-                    arr++, flag++;
+                     arr++,flag++;
                     break;
                 }
-                j++;
+            j++;
             }
             if (flag == 0) {
                 set1[i] = mx_strdup(*arr);
                 i++;
             }
-            arr++;
         }
     }
     set1[i] = NULL;
@@ -67,7 +68,7 @@ static void mx_linearr(char *src, char **island1, char **island2, char **distanc
     while (src_cp[slot] != '\0') slot++;
     *distance = mx_strndup(src_cp, slot);
     slot = 0;
-}
+} // 17
 
 static void mx_create_arr(char **src, char ***arrarr) {
     char *island1 = NULL;
@@ -98,13 +99,14 @@ static void mx_create_arr(char **src, char ***arrarr) {
 void mx_parse(char *argv) {
     char **arrarr = NULL;
     char **set = NULL;
-    int **matrix = NULL;
+   int **matrix = NULL;
     char *fd = mx_file_to_str(argv);
     char **src = mx_strsplit(fd, '\n');
     mx_create_arr(src, &arrarr);
     mx_create_set(&set, &arrarr, src[0]);
     matrix = mx_matrix(arrarr, set);
-    //mx_print_matrix(matrix, set); //Priint Mat
-    mx_main_algoritm (matrix, set); // Algoritm
+    mx_print_strarr(set, "\n"); // Print Set
+    mx_print_matrix(matrix, set); //Priint Mat
+    mx_main_algoritm (matrix, set); // Print Algoritm
     mx_strdel(&fd);
-} //
+} // 13
