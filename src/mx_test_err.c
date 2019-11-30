@@ -6,9 +6,8 @@ static void mx_print_invalid(int n) {
     index = mx_itoa(n);
     mx_printerr("error: line ");
     mx_printerr(index);
-    mx_printerr(" isn't valid\n");
-    exit(EXIT_FAILURE);
-} // 8
+    mx_printerr_exit(" isn't valid\n");
+} // 7
 
 static void mx_checklines(char **src, int n) {
     while (n > 0) {
@@ -35,38 +34,32 @@ static void mx_parserr(char *s) {
 
     while(src[n]) n++;
     while(src[0][at]) {
-        if (!mx_isdigit(src[0][at])) {
-            mx_printerr("error: line 1 isn't valid\n");
-            exit(EXIT_FAILURE);
-        }
+        if (!mx_isdigit(src[0][at]))
+            mx_printerr_exit("error: line 1 isn't valid\n");
         at++;
     }
     at = mx_atoi(src[0]);
     n -= 1;
     mx_checklines(src, n);
     mx_del_strarr(&src);
-} // 17
+} // 15
 
 void mx_test_err(int argc, char *src[]) {
     char *file_str = NULL;
 
-    if (argc != 2) {
-        mx_printerr("usage: ./pathfinder [filename]\n");
-        exit(EXIT_FAILURE);
-    }
+    if (argc != 2)
+        mx_printerr_exit("usage: ./pathfinder [filename]\n");
     file_str = mx_file_to_str(src[1]);
     if (!file_str) {
         mx_printerr("error:  file ");
         mx_printerr(src[1]);
-        mx_printerr(" does not exist\n");
-        exit(EXIT_FAILURE);
+        mx_printerr_exit(" does not exist\n");
     }
     if (mx_strlen(file_str) == 0) {
         mx_printerr("error:  file ");
         mx_printerr(src[1]);
-        mx_printerr(" is empty\n");
-        exit(EXIT_FAILURE);   
+        mx_printerr_exit(" is empty\n"); 
     }
     mx_parserr(file_str);
     mx_strdel(&file_str);
-} //22
+} // 18
