@@ -29,4 +29,4 @@ char *mx_nbr_to_hex(unsigned long nbr) {
 		result[k] = temp;
 	}
 	return result;
-}
+} //29

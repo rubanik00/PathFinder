@@ -1,17 +1,14 @@
 #include "libmx.h"
 
 static int mx_wordlen(const char *s, char c) {
-
     int i = 0;
     char *temp = (char *)s;
 
-    while(*temp++ != c)
-        i++;
+    while(*temp++ != c) i++;
     return i;
 }
 
 char **mx_strsplit(const char *s, char c) {
-
     if (!s) return NULL;
 
     char *tmp = (char *)s;
@@ -34,4 +31,4 @@ char **mx_strsplit(const char *s, char c) {
     }
     res[i] = NULL;
     return res;
-}
+} // 23

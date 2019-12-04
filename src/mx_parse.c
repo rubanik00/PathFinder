@@ -2,25 +2,21 @@
 
 static int mx_count_island(char **arr, char *numOfIsland) {
     int count = 0;
-    int i = 0;
-    int j = 0;
-    
-    while (arr[i] != NULL) {
-        if (mx_isdigit(arr[i][0]) && arr[i + 1] != NULL) i++;
-        j = i - 1;
-        while(j >= 0) {
+
+    if (arr[0]) count++;
+    for (int i = 1; arr[i] != NULL; i++) {
+        if (mx_isdigit(arr[i][0])) i++;
+        if (arr[i] == 0) break;
+        for (int j = i - 1; j >= 0; j--) {
             if (mx_strcmp(arr[i], arr[j]) == 0) break;
             if (j == 0) count++;
-            j--;
         }
-        i++;
     }
     if (count != mx_atoi(numOfIsland)) {
        mx_printerr("error: invalid number of islands\n");
-       exit(EXIT_FAILURE);
     }
     return count;
-} //20
+} //21
 
 static void mx_create_set(char ***set, char ***arrarr, char *numOfIsland) {
     char **arr = *arrarr;
@@ -28,19 +24,23 @@ static void mx_create_set(char ***set, char ***arrarr, char *numOfIsland) {
     int j = 0;
     int flag = 0;
     int count = mx_count_island(arr, numOfIsland);
-    *set = (char **)malloc((count + 1) * sizeof(char *));
+    *set = (char **)malloc((count + 2) * sizeof(char *));
     char **set1 = *set;
 
     while (*arr) {
         if (mx_isdigit(**arr)) arr++;
         j = 0, flag = 0;
         if (*arr) {
-            while(set1[j]) {
+            while (set1[j]) {
                 if (mx_strcmp(*arr, set1[j]) == 0) {   
-                     arr++,flag++;
+                    arr++,flag++;
                     break;
                 }
             j++;
+            if (flag !=0) {
+                arr++;
+                continue;
+            }
             }
             if (flag == 0) {
                 set1[i] = mx_strdup(*arr);
@@ -93,7 +93,7 @@ static void mx_create_arr(char **src, char ***arrarr) {
     }
     mx_strdel(&island1);
     mx_strdel(&island2);
-    mx_strdel(&distance);  
+    mx_strdel(&distance);
 } //24
 
 void mx_parse(char *argv) {
@@ -114,10 +114,11 @@ void mx_parse(char *argv) {
     }
     src = mx_strsplit(fd, '\n');
     mx_create_arr(src, &arrarr);
+    //mx_print_strarr(arrarr, "\n"); // Print Arr
     mx_create_set(&set, &arrarr, src[0]);
     matrix = mx_matrix(arrarr, set);
     mx_print_strarr(set, "\n"); // Print Set
-    mx_print_matrix(matrix, set); //Priint Mat
-    mx_main_algoritm (matrix, set); // Print Algoritm
+    //mx_print_matrix(matrix, set); //Priint Mat
+    //mx_main_algoritm (matrix, set); // Print Algoritm
     mx_strdel(&fd);
 } // 24

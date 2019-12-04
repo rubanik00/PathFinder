@@ -48,6 +48,9 @@ static void algoritm (int **matrix, char **set, int size, int root) {
     for (i = root; i < size; i++) {
         push_back_island(&unvisited, i, 0); // заполнем лист нулями
     }
+
+
+    
     for (int isl1 = root; isl1 < size; isl1++) {
         head = unvisited; // y
         current = unvisited; // x
@@ -68,12 +71,13 @@ static void algoritm (int **matrix, char **set, int size, int root) {
         }
         current = current->next;
     }
+    
 
     while (unvisited != NULL) {
         printf("%s %d \n", set[unvisited->indexIslnd], unvisited->distTo);
-
         pop_front(&unvisited);
     }
+    // printf("%d \n", unvisited->distTo);
 } // 35
 
 void mx_main_algoritm (int **matrix, char **set) {
@@ -84,6 +88,6 @@ void mx_main_algoritm (int **matrix, char **set) {
     
     // while (i < size) {
         algoritm (matrix, set, size, i);
-    //     i++;
-    // }
+        //  i++;
+    //}
 } // 10

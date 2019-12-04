@@ -1,5 +1,6 @@
-double mx_pow(double n, int pow) {
+#include "libmx.h"
 
+double mx_pow(double n, int pow) {
 	if (pow == 0)
 		return 1;
 	else if (pow == 1)

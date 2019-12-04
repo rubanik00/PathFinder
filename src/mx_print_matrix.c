@@ -7,7 +7,7 @@ void mx_print_matrix(int **matrix, char **set) {
         int j = 0;
         while (j < i) {
             mx_printint(matrix[k][j]);
-            mx_printchar(' ');
+            mx_printchar('\t');
             j++;
         }
         mx_printchar('\n');
