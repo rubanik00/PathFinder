@@ -41,16 +41,24 @@ static void pop_front (t_island **head) {
 
 static void algoritm (int **matrix, char **set, int size, int root) {
     t_island *unvisited = NULL; // создаем лист
+    t_island *visited = NULL;
     t_island *head = NULL;
     t_island *current = NULL;
-    int i = 0;
+    t_island *un = unvisited; 
 
-    for (i = root; i < size; i++) {
+    for (int i = root; i < size; i++)
         push_back_island(&unvisited, i, 0); // заполнем лист нулями
+
+    while (root != un->indexIslnd) 
+        un = un->next; // Ищем рут
+
+    if (root == un->indexIslnd) 
+        push_back_island(&visited, root, 0); // Пушим индекс рута в посещенное
+
+    while (visited != NULL) {
+        printf("Visited: %d\n", visited->indexIslnd); // Вывод посещеного
+        visited = visited->next;
     }
-
-
-    
     for (int isl1 = root; isl1 < size; isl1++) {
         head = unvisited; // y
         current = unvisited; // x
@@ -73,12 +81,12 @@ static void algoritm (int **matrix, char **set, int size, int root) {
     }
     
 
-    while (unvisited != NULL) {
-        printf("%s %d \n", set[unvisited->indexIslnd], unvisited->distTo);
-        pop_front(&unvisited);
-    }
+    // while (unvisited != NULL) {
+    //     printf("%s %d \n", set[unvisited->indexIslnd], unvisited->distTo);
+    //     pop_front(&unvisited);
+    // }
     // printf("%d \n", unvisited->distTo);
-} // 35
+ } // 35
 
 void mx_main_algoritm (int **matrix, char **set) {
     int size = 0;
@@ -88,6 +96,6 @@ void mx_main_algoritm (int **matrix, char **set) {
     
     // while (i < size) {
         algoritm (matrix, set, size, i);
-        //  i++;
-    //}
+        //   i++;
+    // }
 } // 10
