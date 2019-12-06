@@ -39,53 +39,74 @@ static void pop_front (t_island **head) {
 	}
 } // 14
 
+static void pop_index (t_island **unvisited, int index) {
+    t_island *temp = NULL;
+    t_island *previous = NULL;
+    if (!unvisited || !(*unvisited)) 
+        return;
+    if ((*unvisited)->indexIslnd == index)
+        pop_front(&(*unvisited));
+    else {
+        temp = *unvisited;
+        previous = temp;
+        while (temp != NULL && temp->indexIslnd != index) {
+            previous = temp;
+            temp = temp->next;
+        }
+        if (temp && temp->indexIslnd == index) {
+            if(temp->next)
+                previous->next = temp->next;
+            else 
+                previous->next = NULL;
+            free(temp);
+            temp = NULL;
+        }
+    }
+}
+
 static void algoritm (int **matrix, char **set, int size, int root) {
-    t_island *unvisited = NULL; // создаем лист
+    t_island *unvisited = NULL;
     t_island *visited = NULL;
     t_island *head = NULL;
     t_island *current = NULL;
-    t_island *un = unvisited; 
+    t_island *shortest = NULL;
 
-    for (int i = root; i < size; i++)
+    for (int i = 0; i < size; i++)
         push_back_island(&unvisited, i, 0); // заполнем лист нулями
 
-    while (root != un->indexIslnd) 
-        un = un->next; // Ищем рут
+        current = unvisited;
 
-    if (root == un->indexIslnd) 
-        push_back_island(&visited, root, 0); // Пушим индекс рута в посещенное
+    while (current->indexIslnd != root) 
+        current = current->next;
+    
+        push_back_island(&visited, current->indexIslnd, current->distTo);
+        pop_index (&unvisited, root);
+    
+    current = visited;
+    
+    while (unvisited) {
+        head = unvisited;
+        while (head != NULL) {
+            int isl1 = current->indexIslnd;
+            int isl2 = head->indexIslnd;
 
-    while (visited != NULL) {
-        printf("Visited: %d\n", visited->indexIslnd); // Вывод посещеного
-        visited = visited->next;
-    }
-    for (int isl1 = root; isl1 < size; isl1++) {
-        head = unvisited; // y
-        current = unvisited; // x
-
-        while(current->indexIslnd != isl1)
-            current = current->next; // ищем опорный элемент х
-        while(head->indexIslnd != isl1 + 1 && isl1 + 1 < size)
-            head = head->next; // ищем опорный элемент y
-        for (int isl2 = isl1 + 1; head && isl2 < size; isl2++) {
-            if (matrix[isl1][isl2] != 0 && head->distTo) { // если запись дистанции уже есть
+            if (matrix[isl1][isl2] != 0 && head->distTo == 0)  // если запись дистанции уже есть
+                head->distTo = current->distTo + matrix[isl1][isl2];
+            else if (matrix[isl1][isl2] != 0)
                 if(current->distTo + matrix[isl1][isl2] < head->distTo) // если запись дистанции длинее чем новый путь
                     head->distTo = current->distTo + matrix[isl1][isl2]; // меняем на новый путь
-            }
-            else if (matrix[isl1][isl2] != 0 && !head->distTo) { // если дистанция 0
-                head->distTo = current->distTo + matrix[isl1][isl2]; // записываем новую дистанцию
-            }
             head = head->next;
         }
+        shortest = mx_short_dist(&unvisited);
+        push_back_island(&visited, shortest->indexIslnd, shortest->distTo);
+        pop_index (&unvisited, shortest->indexIslnd);
         current = current->next;
-    }
-    
 
-    // while (unvisited != NULL) {
-    //     printf("%s %d \n", set[unvisited->indexIslnd], unvisited->distTo);
-    //     pop_front(&unvisited);
-    // }
-    // printf("%d \n", unvisited->distTo);
+    }
+    while (visited != NULL) {
+        printf("%s %d \n", set[visited->indexIslnd], visited->distTo);
+        pop_front(&visited);
+    }
  } // 35
 
 void mx_main_algoritm (int **matrix, char **set) {
@@ -94,8 +115,9 @@ void mx_main_algoritm (int **matrix, char **set) {
 
     while (set[size]) size++;
     
-    // while (i < size) {
+    while (i < size) {
         algoritm (matrix, set, size, i);
-        //   i++;
-    // }
+        i++;
+        mx_printchar('\n');
+    }
 } // 10

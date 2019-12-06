@@ -17,4 +17,6 @@ typedef struct s_island {
     struct s_island * next;
 } t_island;
 
+t_island *mx_short_dist(t_island **unvisited);
+
 #endif
