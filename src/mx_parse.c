@@ -100,18 +100,8 @@ void mx_parse(char *argv) {
     char **arrarr = NULL;
     char **set = NULL;
     int **matrix = NULL;
-    int i = 0;
     char *fd = mx_file_to_str(argv);
     char **src = NULL;
-    
-    while (fd[i]) {
-        if (mx_isspace(*fd)) 
-            mx_printerr_exit("Error! You have a space in 1\n");
-        if (mx_isspace(fd[i]) && mx_isspace(fd[i + 1])) {
-            mx_printerr_exit("Error! You have a space\n"); // отлов пробелов между строк
-        }
-        i++;
-    }
     src = mx_strsplit(fd, '\n');
     mx_create_arr(src, &arrarr);
     //mx_print_strarr(arrarr, "\n"); // Print Arr
@@ -119,6 +109,6 @@ void mx_parse(char *argv) {
     matrix = mx_matrix(arrarr, set);
     // mx_print_strarr(set, "\n"); // Print Set
     //mx_print_matrix(matrix, set); //Priint Mat
-    mx_main_algoritm (matrix, set); // Print Algoritm
+    mx_main_algoritm(matrix, set); // Print Algoritm
     mx_strdel(&fd);
 } // 24

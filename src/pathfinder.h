@@ -10,6 +10,7 @@ int **mx_matrix(char **arrarr, char **set);
 void mx_print_matrix(int **matrix, char **set);
 void mx_main_algoritm (int **matrix, char **set);
 void mx_printerr_exit(const char *s);
+void mx_check_spaces(char **src, char *file);
 
 typedef struct s_island {
     int indexIslnd;

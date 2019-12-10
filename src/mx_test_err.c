@@ -41,6 +41,7 @@ static void mx_parserr(char *s) {
     at = mx_atoi(src[0]);
     n -= 1;
     mx_checklines(src, n);
+    mx_check_spaces(src, s);
     mx_del_strarr(&src);
 } // 15
 
