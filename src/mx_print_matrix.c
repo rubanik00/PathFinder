@@ -1,10 +1,14 @@
 #include "pathfinder.h"
 
 void mx_print_matrix(int **matrix, char **set) {
-    int i = 0, k = 0;
-    while(set[i]) i++;
+    int i = 0; 
+    int k = 0;
+    int j = 0;
+
+    while(set[i]) 
+        i++;
     while(k < i) {
-        int j = 0;
+        j = 0;
         while (j < i) {
             mx_printint(matrix[k][j]);
             mx_printchar('\t');
@@ -13,4 +17,4 @@ void mx_print_matrix(int **matrix, char **set) {
         mx_printchar('\n');
         k++;
     }
-} // 13
+} // 17

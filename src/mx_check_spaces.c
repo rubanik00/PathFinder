@@ -6,15 +6,13 @@ static void print_space(int n) {
     mx_printerr("error: line ");
     mx_printerr(index);
     mx_printerr_exit(" isn't valid\n");
-}
+} // 6
 
 void mx_check_spaces(char **src, char *file) {
-
     char *fl = file;
     char **sr = src;
     int i = 0;
     int len = 0;
-    // mx_print_strarr(&fl, "\n");
 
     if (mx_isspace(fl[0]))
             mx_printerr_exit("error: line 1 isn't valid\n");
@@ -30,4 +28,4 @@ void mx_check_spaces(char **src, char *file) {
         }
         fl++;
     }
-}
+} // 20

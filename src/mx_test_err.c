@@ -10,8 +10,11 @@ static void mx_print_invalid(int n) {
 } // 7
 
 static void mx_checklines(char **src, int n) {
+    int i = 0; 
+    int cp_i = 0;
+    
     while (n > 0) {
-        int i = 0, cp_i = 0;
+        i = 0, cp_i = 0;
         while (mx_isalpha(src[n][i])) i++;
         if (i == 0 || src[n][i] != '-')
             mx_print_invalid(n);
@@ -25,14 +28,15 @@ static void mx_checklines(char **src, int n) {
             mx_print_invalid(n);
         n--;       
     }
-} // 16
+} // 19
 
 static void mx_parserr(char *s) {
     char **src = mx_strsplit(s, '\n');
     int n = 0;
     int at = 0;
 
-    while(src[n]) n++;
+    while(src[n]) 
+        n++;
     while(src[0][at]) {
         if (!mx_isdigit(src[0][at]))
             mx_printerr_exit("error: line 1 isn't valid\n");
@@ -43,7 +47,7 @@ static void mx_parserr(char *s) {
     mx_checklines(src, n);
     mx_check_spaces(src, s);
     mx_del_strarr(&src);
-} // 15
+} // 16
 
 void mx_test_err(int argc, char *src[]) {
     char *file_str = NULL;
