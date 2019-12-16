@@ -1,6 +1,6 @@
 #include "pathfinder.h"
-
-static void fill (char **arrarr, char **set, int ***matrix, int i, int j) {
+// ??? 5 elementov
+static void fill(char **arrarr, char **set, int ***matrix, int i, int j) {
     int **mat = *matrix;
     int k = 0;
 
@@ -18,7 +18,7 @@ static void fill (char **arrarr, char **set, int ***matrix, int i, int j) {
     } 
 } // 16
 
-static void mx_matrix_algoritm (char **arrarr, char **set, int ***matrix) {
+static void mx_matrix_algoritm(char **arrarr, char **set, int ***matrix) {
     int i = 0;
     int j = 0;
     
@@ -34,14 +34,14 @@ static void mx_matrix_algoritm (char **arrarr, char **set, int ***matrix) {
     }
 } // 14
 
-int **mx_matrix (char ***arrarr, char **set) {
+int **mx_matrix(char ***arrarr, char **set) {
     int **matrix = NULL;
     int i = 0;
     int k = 0;
 
-    while (set[i]) 
+    while(set[i]) 
         i++;
-    matrix = malloc (sizeof(int*) * i);
+    matrix = malloc(sizeof(int*) * i);
     k = i;
     while(k >= 0) { 
         matrix[k] = malloc(sizeof(int) * i);

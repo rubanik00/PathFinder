@@ -20,12 +20,11 @@ void mx_check_spaces(char **src, char *file) {
         if (mx_isspace(*fl) && mx_isspace(*(fl + 1))) {
             while(sr[i]) {
                 len = mx_strlen(sr[i]);
-                if (mx_strncmp(fl - len, sr[i], mx_strlen(sr[i])) == 0) {
+                if (mx_strncmp(fl - len, sr[i], mx_strlen(sr[i])) == 0)
                     print_space(i+1);
-                }
                 i++;
             }
         }
         fl++;
     }
-} // 20
+} // 19
