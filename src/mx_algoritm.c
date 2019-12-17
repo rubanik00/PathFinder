@@ -25,8 +25,10 @@ static void algoritm (int **matrix, char **set, int size, int root) {
             if (matrix[isl1][isl2] != 0 && head->distTo == 0)  // если запись дистанции уже есть
                 head->distTo = current->distTo + matrix[isl1][isl2];
             else if (matrix[isl1][isl2] != 0)
-                if(current->distTo + matrix[isl1][isl2] < head->distTo) // если запись дистанции длинее чем новый путь
+                if(current->distTo + matrix[isl1][isl2] < head->distTo) { // если запись дистанции длинее чем новый путь
                     head->distTo = current->distTo + matrix[isl1][isl2]; // меняем на новый путь
+                    mx_push_path();
+                }
             head = head->next;
         }
         shortest = mx_short_dist(&unvisited);

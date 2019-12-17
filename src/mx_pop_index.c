@@ -10,7 +10,7 @@ static void check_index (t_island *temp, t_island *previous) {
         temp = NULL;
 }
 
-void mx_pop_index (t_island **unvisited, int index) {
+void mx_pop_index(t_island **unvisited, int index) {
     t_island *temp = NULL;
     t_island *previous = NULL;
 

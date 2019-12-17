@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-static void print_space(int n) {
+static void print_space_err(int n) {
     n++;
     char *index = mx_itoa(n);
     mx_printerr("error: line ");
@@ -21,7 +21,7 @@ void mx_check_spaces(char **src, char *file) {
             while(sr[i]) {
                 len = mx_strlen(sr[i]);
                 if (mx_strncmp(fl - len, sr[i], mx_strlen(sr[i])) == 0)
-                    print_space(i+1);
+                    print_space_err(i+1);
                 i++;
             }
         }
