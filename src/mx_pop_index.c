@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-static void check_index (t_island *temp, t_island *previous) {
+static void check_index(t_island *temp, t_island *previous) {
 
     if(temp->next)
         previous->next = temp->next;

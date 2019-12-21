@@ -31,10 +31,15 @@ typedef struct s_island {
 
 t_island *mx_short_dist(t_island **unvisited);
 t_island *mx_create_island (int isl, int dist);
-void mx_push_back_island (t_island **island, int isl, int dist);
+void mx_push_back_island(t_island **island, t_path **path, int isl, int dist);
 void mx_pop_front_island(t_island **head);
 void mx_pop_index (t_island **unvisited, int index);
 t_path *mx_create_path(int isl, int dist);
-void mx_push_path_back(t_path **path, int isl, int dist);
+void mx_push_back_path(t_path **path, t_path **previous,int isl, int dist);
+void mx_addLink(t_path **cur, t_path **new);
+t_path *mx_addOnePath(t_path **previous, int isl, int dist);
+t_path *mx_addPath(t_path **previous, int isl, int dist);
+void mx_dellPath(t_path **head);
+t_path *mx_copyPath(t_path **data);
 
 #endif
