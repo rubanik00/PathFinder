@@ -41,5 +41,6 @@ t_path *mx_addOnePath(t_path **previous, int isl, int dist);
 t_path *mx_addPath(t_path **previous, int isl, int dist);
 void mx_dellPath(t_path **head);
 t_path *mx_copyPath(t_path **data);
+int mx_uniquePath(t_path **new, t_path **pre);
 
 #endif

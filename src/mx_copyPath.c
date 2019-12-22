@@ -22,9 +22,8 @@ t_path *mx_copyPath(t_path **data) {
 	t_path *new = NULL;
 	t_path *fast = NULL;
 
-    if (*data) {
+    if (*data)
         now = *data;
-    }
     res = addOne(&now);
 	fast = res;
 	now = now->nextPath;
@@ -35,4 +34,4 @@ t_path *mx_copyPath(t_path **data) {
 		now = now->nextPath;
 	}
 	return res;
-} // 19
+} // 18

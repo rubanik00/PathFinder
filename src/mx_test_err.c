@@ -9,26 +9,28 @@ static void mx_print_invalid(int n) {
     mx_printerr_exit(" isn't valid\n");
 } // 7
 
-static void mx_checklines(char **src, int n) {
+static void mx_checklines(char **src, int nline) {
     int i = 0; 
     int cp_i = 0;
     
-    while (n > 0) {
-        i = 0, cp_i = 0;
-        while (mx_isalpha(src[n][i])) i++;
-        if (i == 0 || src[n][i] != '-')
-            mx_print_invalid(n);
-        i++, cp_i = i;
-        while(mx_isalpha(src[n][cp_i])) cp_i++;
-        if (cp_i - i == 0 || src[n][cp_i] != ',')
-            mx_print_invalid(n);
-        cp_i++, i = cp_i;
-        while(mx_isdigit(src[n][cp_i])) cp_i++;
-        if (cp_i - i == 0 || src[n][cp_i] != '\0')
-            mx_print_invalid(n);
-        n--;       
-    }
-} // 19
+    for (int n = 1; n <= nline; n++) {
+		i = 0, cp_i = 0;
+		while(mx_isalpha(src[n][i])) 
+            i++;
+		if (i == 0 || src[n][i] != '-')
+			mx_print_invalid(n);
+		i++, cp_i = i;
+		while(mx_isalpha(src[n][cp_i])) 
+            cp_i++;
+		if (cp_i - i == 0 || src[n][cp_i] != ',')
+			mx_print_invalid(n);
+		cp_i++, i = cp_i;
+		while(mx_isdigit(src[n][cp_i])) 
+            cp_i++;
+		if (cp_i - i == 0 || src[n][cp_i] != '\0') 
+			mx_print_invalid(n);
+	}
+} // 21
 
 static void mx_parserr(char *s) {
     char **src = mx_strsplit(s, '\n');
@@ -43,11 +45,10 @@ static void mx_parserr(char *s) {
         at++;
     }
     at = mx_atoi(src[0]);
-    n -= 1;
-    mx_checklines(src, n);
+    mx_checklines(src, n-1);
     mx_check_spaces(src, s);
     mx_del_strarr(&src);
-} // 16
+} // 15
 
 void mx_test_err(int argc, char *src[]) {
     char *file_str = NULL;

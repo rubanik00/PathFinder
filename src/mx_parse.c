@@ -11,8 +11,8 @@ void mx_parse(char *argv) {
     //mx_print_strarr(arrarr, "\n"); // Print Arr
     mx_create_set(&set, &arrarr, src[0]);
     matrix = mx_matrix(&arrarr, set);
-    //mx_print_strarr(set, "\n"); // Print Set
-   // mx_print_matrix(matrix, set); //Priint Mat
+    mx_print_strarr(set, "\n"); // Print Set
+    mx_print_matrix(matrix, set); //Priint Mat
     mx_main_algoritm(matrix, set); // Print Algoritm
     mx_strdel(&fd);
 } // 15
