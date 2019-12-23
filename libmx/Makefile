@@ -9,13 +9,11 @@ SRC = ./mx_binary_search.c \
 	./mx_count_substr.c \
 	./mx_count_words.c \
 	./mx_create_node.c \
-	./mx_del_extra_spaces.c \
 	./mx_del_strarr.c \
 	./mx_file_to_str.c \
 	./mx_foreach.c \
 	./mx_get_char_index.c \
 	./mx_get_substr_index.c \
-	./mx_hex_to_nbr.c \
 	./mx_isspace.c \
 	./mx_itoa.c \
 	./mx_list_size.c \
@@ -26,20 +24,15 @@ SRC = ./mx_binary_search.c \
 	./mx_memmem.c \
 	./mx_memmove.c \
 	./mx_memset.c \
-	./mx_nbr_to_hex.c \
 	./mx_pop_back.c \
 	./mx_pop_front.c \
 	./mx_pow.c \
 	./mx_print_strarr.c \
-	./mx_print_unicode.c \
 	./mx_printchar.c \
 	./mx_printint.c \
 	./mx_printstr.c \
 	./mx_push_back.c \
 	./mx_push_front.c \
-	./mx_quicksort.c \
-	./mx_read_line.c \
-	./mx_realloc.c \
 	./mx_replace_substr.c \
 	./mx_sort_list.c \
 	./mx_sqrt.c \
@@ -70,13 +63,11 @@ SRCS = ./src/mx_binary_search.c \
 	./src/mx_count_substr.c \
 	./src/mx_count_words.c \
 	./src/mx_create_node.c \
-	./src/mx_del_extra_spaces.c \
 	./src/mx_del_strarr.c \
 	./src/mx_file_to_str.c \
 	./src/mx_foreach.c \
 	./src/mx_get_char_index.c \
 	./src/mx_get_substr_index.c \
-	./src/mx_hex_to_nbr.c \
 	./src/mx_isspace.c \
 	./src/mx_itoa.c \
 	./src/mx_list_size.c \
@@ -87,20 +78,15 @@ SRCS = ./src/mx_binary_search.c \
 	./src/mx_memmem.c \
 	./src/mx_memmove.c \
 	./src/mx_memset.c \
-	./src/mx_nbr_to_hex.c \
 	./src/mx_pop_back.c \
 	./src/mx_pop_front.c \
 	./src/mx_pow.c \
 	./src/mx_print_strarr.c \
-	./src/mx_print_unicode.c \
 	./src/mx_printchar.c \
 	./src/mx_printint.c \
 	./src/mx_printstr.c \
 	./src/mx_push_back.c \
 	./src/mx_push_front.c \
-	./src/mx_quicksort.c \
-	./src/mx_read_line.c \
-	./src/mx_realloc.c \
 	./src/mx_replace_substr.c \
 	./src/mx_sort_list.c \
 	./src/mx_sqrt.c \
@@ -131,13 +117,11 @@ OBJ = ./mx_binary_search.o \
 	./mx_count_substr.o \
 	./mx_count_words.o \
 	./mx_create_node.o \
-	./mx_del_extra_spaces.o \
 	./mx_del_strarr.o \
 	./mx_file_to_str.o \
 	./mx_foreach.o \
 	./mx_get_char_index.o \
 	./mx_get_substr_index.o \
-	./mx_hex_to_nbr.o \
 	./mx_isspace.o \
 	./mx_itoa.o \
 	./mx_list_size.o \
@@ -148,20 +132,15 @@ OBJ = ./mx_binary_search.o \
 	./mx_memmem.o \
 	./mx_memmove.o \
 	./mx_memset.o \
-	./mx_nbr_to_hex.o \
 	./mx_pop_back.o \
 	./mx_pop_front.o \
 	./mx_pow.o \
 	./mx_print_strarr.o \
-	./mx_print_unicode.o \
 	./mx_printchar.o \
 	./mx_printint.o \
 	./mx_printstr.o \
 	./mx_push_back.o \
 	./mx_push_front.o \
-	./mx_quicksort.o \
-	./mx_read_line.o \
-	./mx_realloc.o \
 	./mx_replace_substr.o \
 	./mx_sort_list.o \
 	./mx_sqrt.o \
@@ -192,13 +171,11 @@ OBJO = ./obj/mx_binary_search.o \
 	./obj/mx_count_substr.o \
 	./obj/mx_count_words.o \
 	./obj/mx_create_node.o \
-	./obj/mx_del_extra_spaces.o \
 	./obj/mx_del_strarr.o \
 	./obj/mx_file_to_str.o \
 	./obj/mx_foreach.o \
 	./obj/mx_get_char_index.o \
 	./obj/mx_get_substr_index.o \
-	./obj/mx_hex_to_nbr.o \
 	./obj/mx_isspace.o \
 	./obj/mx_itoa.o \
 	./obj/mx_list_size.o \
@@ -209,20 +186,15 @@ OBJO = ./obj/mx_binary_search.o \
 	./obj/mx_memmove.o \
 	./obj/mx_memchr.o \
 	./obj/mx_memset.o \
-	./obj/mx_nbr_to_hex.o \
 	./obj/mx_pop_back.o \
 	./obj/mx_pop_front.o \
 	./obj/mx_pow.o \
 	./obj/mx_print_strarr.o \
-	./obj/mx_print_unicode.o \
 	./obj/mx_printchar.o \
 	./obj/mx_printint.o \
 	./obj/mx_printstr.o \
 	./obj/mx_push_back.o \
 	./obj/mx_push_front.o \
-	./obj/mx_quicksort.o \
-	./obj/mx_read_line.o \
-	./obj/mx_realloc.o \
 	./obj/mx_replace_substr.o \
 	./obj/mx_sort_list.o \
 	./obj/mx_sqrt.o \

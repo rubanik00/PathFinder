@@ -5,7 +5,8 @@ void *mx_memchr(const void *s, int c, size_t n) {
     unsigned const char *tmp = s;
 
     while (*tmp && n--) {
-        if (*tmp == c1) return (char*)tmp;
+        if (*tmp == c1) 
+            return (char*)tmp;
         tmp++;
     }
     return NULL;
