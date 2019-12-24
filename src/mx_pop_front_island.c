@@ -14,4 +14,4 @@ void mx_pop_front_island(t_island **head) {
 		free(*head); 
 		*head = p;
 	}
-} // 14
+} // 12

@@ -16,7 +16,7 @@ static void fill(char **arrarr, char **set, int ***matrix, int i, int j) {
             k++;
         mat[i][k] = mx_atoi(arrarr[j + 1]);
     } 
-} // 16
+} // 14
 
 static void mx_matrix_algoritm(char **arrarr, char **set, int ***matrix) {
     int i = 0;
@@ -32,7 +32,7 @@ static void mx_matrix_algoritm(char **arrarr, char **set, int ***matrix) {
         }
         i++;
     }
-} // 14
+} // 12
 
 int **mx_matrix(char ***arrarr, char **set) {
     int **matrix = NULL;
@@ -49,4 +49,4 @@ int **mx_matrix(char ***arrarr, char **set) {
     }
     mx_matrix_algoritm(*arrarr, set, &matrix);
     return matrix;
-} // 15
+} // 13

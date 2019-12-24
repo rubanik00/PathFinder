@@ -14,7 +14,7 @@ static t_path *addOne(t_path **previous) {
 		new = new->nextConnect;
 	}
 	return res;
-} // 14
+} // 12
 
 t_path *mx_copyPath(t_path **data) {
     t_path *now = NULL;
@@ -34,4 +34,4 @@ t_path *mx_copyPath(t_path **data) {
 		now = now->nextPath;
 	}
 	return res;
-} // 18
+} // 16

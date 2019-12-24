@@ -9,7 +9,7 @@ static void compare(t_path **newOne, t_path **preOne, int *flag) {
 	}
 	if (!(*newOne) || !(*preOne))
 		*flag = 1;
-}
+} // 7
 
 static void step(t_path **old, t_path **path, t_path **new) {
 	*path = *new;
@@ -36,4 +36,4 @@ int mx_uniquePath(t_path **new, t_path **pre) {
         old = old->nextConnect;
     }
     return flag;
-}
+} // 18

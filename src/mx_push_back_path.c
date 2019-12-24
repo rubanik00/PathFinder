@@ -16,4 +16,4 @@ void mx_push_back_path(t_path **path, t_path **previous,int isl, int dist) {
         }
         pre = pre->nextPath;
     }
-} // 15
+} // 13

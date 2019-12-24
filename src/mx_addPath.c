@@ -19,4 +19,4 @@ t_path *mx_addPath(t_path **previous, int isl, int dist) {
         now = now->nextPath;
     }
     return res;
-} // 19
+} // 17

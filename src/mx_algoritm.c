@@ -12,7 +12,7 @@ static void displayPath(t_path **disp, char **set) {
 		bond = bond->nextPath;
 	}
 	printf("%s\n", "next");
-} // 12
+} // 10
 
 static void algoritm (int **matrix, char **set, int size, int root) {
     t_island *unvisited = NULL;
@@ -76,7 +76,7 @@ static void algoritm (int **matrix, char **set, int size, int root) {
         mx_dellPath(&visited->path);
         mx_pop_front_island(&visited);
     }
- } // 62
+ } // 60
 
 void mx_main_algoritm (int **matrix, char **set) {
     int size = 0;
@@ -89,4 +89,4 @@ void mx_main_algoritm (int **matrix, char **set) {
         i++;
         mx_printchar('\n');
     }
-} // 11
+} // 9

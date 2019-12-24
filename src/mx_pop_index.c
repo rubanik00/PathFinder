@@ -28,4 +28,4 @@ void mx_pop_index(t_island **unvisited, int index) {
         if (temp && temp->indexIslnd == index)
             check_index(temp, previous);
     }
-} // 18
+} // 16

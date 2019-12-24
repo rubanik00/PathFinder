@@ -12,25 +12,21 @@ static int count_flag(char **set1, char *arr) {
         j++;
     }
     return flag;
-} // 12
+} // 10
 
-static int set_dup (char **set1, char **arr, int i) {
+static int set_dup(char **set1, char **arr, int i) {
     set1[i] = mx_strdup(*arr);
     set1[i+1] = NULL;
     i += 1;
     return i;
-} // 5
-
-static char **malloc_set(char ***set, char **arr, char *numOfIsland) {
-    int count = mx_count_island(arr, numOfIsland);
-    *set = (char **)malloc((count + 1) * sizeof(char *));
-    **set = NULL;
-    return *set;
 } // 4
 
 void mx_create_set(char ***set, char ***arrarr, char *numOfIsland) {
+    int count = mx_count_island(*arrarr, numOfIsland);
+    *set = (char **)malloc((count + 1) * sizeof(char *));
+    **set = NULL;
     char **arr = *arrarr;
-    char **set1 = malloc_set(set, arr, numOfIsland);
+    char **set1 = *set;
     int j = 0;
     int flag = 0;
     int i = 0;
@@ -47,4 +43,4 @@ void mx_create_set(char ***set, char ***arrarr, char *numOfIsland) {
                 i = set_dup(set1, arr, i);
         }
     }
-} // 19
+} // 20

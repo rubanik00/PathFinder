@@ -15,7 +15,7 @@ static void pop_allConnect(t_path **head) {
         *head = NULL;
         return;
     }
-} // 15
+} // 13
 
 static void pop_nextPath(t_path **head) {
     t_path *next_conect = NULL;
@@ -32,7 +32,7 @@ static void pop_nextPath(t_path **head) {
         free(*head);
         *head = next_conect;
     }   
-} // 15
+} // 13
 
 void mx_dellPath(t_path **head) {
     if (!head || !(*head))
@@ -41,4 +41,4 @@ void mx_dellPath(t_path **head) {
         pop_allConnect(&(*head));
         pop_nextPath(&(*head));
     }
-} // 7
+} // 5

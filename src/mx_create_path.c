@@ -8,4 +8,4 @@ t_path *mx_create_path(int isl, int dist) {
     node->nextConnect = NULL;
     node->nextPath = NULL;
     return node;
-} // 8
+} // 6

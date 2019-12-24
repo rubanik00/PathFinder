@@ -15,4 +15,4 @@ t_island *mx_short_dist(t_island **unvisited) {
         }
     }
     return shortest;
-} // 15
+} // 13

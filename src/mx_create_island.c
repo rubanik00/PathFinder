@@ -8,4 +8,4 @@ t_island *mx_create_island(int isl, int dist) {
     node->path = NULL;
     node->next = NULL; 
     return node;
-} // 7
+} // 5
