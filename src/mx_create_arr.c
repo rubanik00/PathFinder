@@ -17,7 +17,6 @@ static void larr(char *src, char **island1, char **island2, char **distance) {
     while (src_cp[slot] != '\0') 
         slot++;
     *distance = mx_strndup(src_cp, slot);
-    slot = 0;
 } // 16
 
 static void mx_fill_islands(char ***arrarr, char **lines) {
@@ -31,23 +30,22 @@ static void mx_fill_islands(char ***arrarr, char **lines) {
 		larr(lines[line], &island1, &island2, &dist);
 		*arr = mx_strdup(island1);
 		arr++;
+		mx_strdel(&island1);
 		*arr = mx_strdup(island2);
 		arr++;
+		mx_strdel(&island2);
 		*arr = mx_strdup(dist);
 		line++, arr++;
-		mx_strdel(&island1);
-		mx_strdel(&island2);
 		mx_strdel(&dist);
 	}
 	*arr = NULL;
-}
+} // 18
 
 void mx_create_arr(char **lines, char ***arrarr){
 	int line = 1;
 
-	while (lines[line]){
+	while (lines[line])
 		line++;
-	}
 	*arrarr = (char **)malloc((line * 3 + 1) * sizeof(char *));
 	mx_fill_islands(&(*arrarr), lines);
 }

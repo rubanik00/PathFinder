@@ -44,6 +44,10 @@ static void mx_parserr(char *s) {
     while(src[0][at]) {
         if (src[0][0] == '0' && !src[1])
             exit(0);
+        if (src[0][0] == '0' && !src[0][1] && src[1])
+            mx_printerr_exit("error: invalid number of islands\n");
+        if (src[0][0] == '0')
+            mx_printerr_exit("error: line 1 isn't valid\n");
         if (!mx_isdigit(src[0][at]))
             mx_printerr_exit("error: line 1 isn't valid\n");
         at++;
@@ -52,7 +56,7 @@ static void mx_parserr(char *s) {
     mx_checklines(src, n-1);
     mx_check_spaces(src, s);
     mx_del_strarr(&src);
-} // 16
+} // 20
 
 void mx_test_err(int argc, char *src[]) {
     char *file_str = NULL;

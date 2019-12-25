@@ -41,8 +41,8 @@ int **mx_matrix(char ***arrarr, char **set) {
 
     while(set[i]) 
         i++;
-    matrix = malloc(sizeof(int*) * i);
     k = i;
+    matrix = malloc(sizeof(int*) * i);
     while(k >= 0) { 
         matrix[k] = malloc(sizeof(int) * i);
         k--;

@@ -25,6 +25,8 @@ int mx_bubble_sort(char **arr, int size);
 
 // String pack
 
+void mx_intdel(int **num);
+void mx_del_intarr(int ***num_arr);
 bool mx_isalpha(int c);
 int mx_atoi(const char *str);
 bool mx_isdigit(int c);

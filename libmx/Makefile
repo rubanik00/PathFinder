@@ -56,6 +56,8 @@ SRC = ./mx_binary_search.c \
 	./mx_atoi.c\
 	./mx_isdigit.c\
 	./mx_isalpha.c\
+	./mx_intdel.c\
+	./mx_del_intarr.c\
 
 SRCS = ./src/mx_binary_search.c \
 	./src/mx_memrchr.c \
@@ -110,6 +112,8 @@ SRCS = ./src/mx_binary_search.c \
 	./src/mx_atoi.c\
 	./src/mx_isdigit.c\
 	./src/mx_isalpha.c\
+	./src/mx_intdel.c\
+	./src/mx_del_intarr.c\
 
 OBJ = ./mx_binary_search.o \
 	./mx_memrchr.o \
@@ -164,6 +168,8 @@ OBJ = ./mx_binary_search.o \
 	./mx_atoi.o\
 	./mx_isdigit.o\
 	./mx_isalpha.o\
+	./mx_intdel.o\
+	./mx_del_intarr.o\
 
 OBJO = ./obj/mx_binary_search.o \
 	./obj/mx_memrchr.o \
@@ -218,6 +224,8 @@ OBJO = ./obj/mx_binary_search.o \
 	./obj/mx_atoi.o\
 	./obj/mx_isdigit.o\
 	./obj/mx_isalpha.o\
+	./obj/mx_intdel.o\
+	./obj/mx_del_intarr.o\
 
 CFLGS = -std=c11 -Wall -Wextra -Wpedantic -Werror 
 all: install uninstall
