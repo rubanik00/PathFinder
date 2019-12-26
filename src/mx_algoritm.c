@@ -45,7 +45,6 @@ static void algoritm (int **matrix, char **set, int size, int root) {
             if (mat != 0 && head->distTo == 0) { // если запись дистанции уже есть
                 head->distTo = current->distTo + mat;
                 head->path = mx_addPath(&current->path, isl2, mat);
-    
             }
             else if (mat != 0) {
                 if (current->distTo + mat == head->distTo)
@@ -65,10 +64,14 @@ static void algoritm (int **matrix, char **set, int size, int root) {
         mx_push_back_island(&visited, &shortest->path, shortest->indexIslnd, shortest->distTo);
         mx_pop_index(&unvisited, shortest->indexIslnd);
         current = current->next;
+        if (current->path == NULL) {
+			mx_delMat(&matrix, set);
+			mx_printerr_exit("error: combination of two islands has not a path between them\n"); //88 columns
+		}
     }
     mx_printchar('\n');
 
-    for(int j = root + 1; j < size; j++) { //
+    for(int j = root + 1; j < size; j++) {
 		current = visited;
 		while (current->indexIslnd != j)
 			current = current->next;
@@ -87,8 +90,8 @@ void mx_main_algoritm (int **matrix, char **set) {
 
     while (set[size]) 
         size++;
-    // while (i < size - 1) {
+    while (i < size - 1) {
         algoritm (matrix, set, size, i);
-        // i++;
-    // }
+        i++;
+    }
 } // 9

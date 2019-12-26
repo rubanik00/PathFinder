@@ -22,7 +22,7 @@ static void pop_nextPath(t_path **head) {
     
     if (!head || !(*head))
         return;
-    if((*head)->nextPath == NULL) {
+    if ((*head)->nextPath == NULL) {
         free(*head);
         *head = NULL;
         return;
@@ -38,7 +38,7 @@ void mx_dellPath(t_path **head) {
     if (!head || !(*head))
         return;
     while (*head) {
-        pop_allConnect(head);
-        pop_nextPath(head);
+        pop_allConnect(&(*head));
+        pop_nextPath(&(*head));
     }
 } // 5
