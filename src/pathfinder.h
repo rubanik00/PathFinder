@@ -13,6 +13,7 @@ void mx_printerr_exit(const char *s);
 void mx_check_spaces(char **src, char *file);
 void mx_create_arr(char **src, char ***arrarr);
 void mx_create_set(char ***set, char ***arrarr, char *numOfIsland);
+void mx_delMat(int ***matrix, char **set);
 
 typedef struct s_path {
     int idPath;

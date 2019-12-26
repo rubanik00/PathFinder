@@ -5,8 +5,8 @@ static void pop_allConnect(t_path **head) {
 
     if (!head || !(*head))
         return;
-    while((*head)->nextPath) {
-        next_conect = (*head)->nextPath;
+    while((*head)->nextConnect) {
+        next_conect = (*head)->nextConnect;
         free(*head);
         *head = next_conect;
     }
@@ -38,7 +38,7 @@ void mx_dellPath(t_path **head) {
     if (!head || !(*head))
         return;
     while (*head) {
-        pop_allConnect(&(*head));
-        pop_nextPath(&(*head));
+        pop_allConnect(head);
+        pop_nextPath(head);
     }
 } // 5

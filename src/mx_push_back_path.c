@@ -5,8 +5,7 @@ void mx_push_back_path(t_path **path, t_path **previous,int isl, int dist) {
     t_path *last = *path;
     t_path *pre = *previous;
 
-    if (last)
-        while (last->nextPath != NULL)
+    while (last->nextPath != NULL)
             last = last->nextPath;
     while (pre) {
         new = mx_addOnePath(&pre, isl, dist);

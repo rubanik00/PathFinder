@@ -7,4 +7,5 @@ void mx_addLink(t_path **cur, t_path **new) {
 		current->nextPath = *new;
 		current = current->nextConnect;
 	}
+	current->nextPath = *new;
 }

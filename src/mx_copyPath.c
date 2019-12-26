@@ -21,7 +21,7 @@ t_path *mx_copyPath(t_path **data) {
 	t_path *res = NULL;
 	t_path *new = NULL;
 	t_path *fast = NULL;
-
+	
     if (*data)
         now = *data;
     res = addOne(&now);

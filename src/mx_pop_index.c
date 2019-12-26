@@ -6,8 +6,9 @@ static void check_index(t_island *temp, t_island *previous) {
         previous->next = temp->next;
     else 
         previous->next = NULL;
-        free(temp);
-        temp = NULL;
+    mx_dellPath(&temp->path);
+    free(temp);
+    temp = NULL;
 }
 
 void mx_pop_index(t_island **unvisited, int index) {
@@ -16,8 +17,10 @@ void mx_pop_index(t_island **unvisited, int index) {
 
     if (!unvisited || !(*unvisited)) 
         return;
-    if ((*unvisited)->indexIslnd == index)
+    if ((*unvisited)->indexIslnd == index) {
+        mx_dellPath(&((*unvisited)->path));
         mx_pop_front_island(&(*unvisited));
+    }
     else {
         temp = *unvisited;
         previous = temp;
