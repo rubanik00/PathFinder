@@ -17,4 +17,4 @@ t_path *mx_addOnePath(t_path **previous, int isl, int dist) {
 	}
 	new->nextConnect = mx_create_path(isl, dist);
 	return res;
-} // 15
+}

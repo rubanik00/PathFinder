@@ -3,7 +3,8 @@
 void mx_delMat(int ***matrix, char **set) {
 	int **mat = *matrix;
 	int i = 0;
-    
+	// int k = 0;
+
 	while(set[i])
 		i++;
 

@@ -12,24 +12,21 @@ static void check_island12(char *island1, char *island2, char *dist, int nline) 
 	}
 }
 
-static void larr(char *src, char **island1, char **island2, char **distance) {
-    int slot = 0;
-    char *src_cp = src;
-
-    while (src_cp[slot] != '-') 
-        slot++;
-    *island1 = mx_strndup(src_cp, slot);
-    src_cp += slot + 1;
-    slot = 0;
-    while (src_cp[slot] != ',') 
-        slot++;
-    *island2 = mx_strndup(src_cp, slot);
-    src_cp += slot + 1;
-    slot = 0;
-    while (src_cp[slot] != '\0') 
-        slot++;
-    *distance = mx_strndup(src_cp, slot);
-} // 16
+static void mx_linearr(char *line, char **island1, char **island2, char **dist) {
+	int i = 0;
+	char *str = line;
+	
+	while(str[i] != '-') i++;
+	*island1 = mx_strndup(str, i);
+	str += i + 1;
+	i = 0;
+	while(str[i] != ',') i++;
+	*island2 = mx_strndup(str, i);
+	str += i + 1;
+	i = 0;
+	while(str[i] != '\0') i++;
+	*dist = mx_strndup(str, i);
+}
 
 static void mx_fill_islands(char ***arrarr, char **lines) {
 	char **arr = *arrarr;
@@ -39,7 +36,7 @@ static void mx_fill_islands(char ***arrarr, char **lines) {
 	int line = 1;
 
 	while(lines[line]) {
-		larr(lines[line], &island1, &island2, &dist);
+		mx_linearr(lines[line], &island1, &island2, &dist);
 		check_island12(island1, island2, dist, line);
 		*arr = mx_strdup(island1);
 		arr++;
@@ -52,13 +49,14 @@ static void mx_fill_islands(char ***arrarr, char **lines) {
 		mx_strdel(&dist);
 	}
 	*arr = NULL;
-} // 18
+} //19
 
 void mx_create_arr(char **lines, char ***arrarr){
 	int line = 1;
 
-	while (lines[line])
+	while (lines[line]){
 		line++;
+	}
 	*arrarr = (char **)malloc((line * 3 + 1) * sizeof(char *));
 	mx_fill_islands(&(*arrarr), lines);
 }

@@ -14,24 +14,24 @@ static t_path *addOne(t_path **previous) {
 		new = new->nextConnect;
 	}
 	return res;
-} // 12
+}
 
 t_path *mx_copyPath(t_path **data) {
-    t_path *now = NULL;
+	t_path *cur = NULL;
 	t_path *res = NULL;
 	t_path *new = NULL;
 	t_path *fast = NULL;
-	
-    if (*data)
-        now = *data;
-    res = addOne(&now);
+
+	if (*data)
+		cur = *data;
+	res = addOne(&cur);
 	fast = res;
-	now = now->nextPath;
-	while (now) {
-		new = addOne(&now);
+	cur = cur->nextPath;
+	while (cur) {
+		new = addOne(&cur);
 		mx_addLink(&fast, &new);
 		fast = fast->nextPath;
-		now = now->nextPath;
+		cur = cur->nextPath;
 	}
 	return res;
-} // 16
+}

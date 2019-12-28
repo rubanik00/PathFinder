@@ -1,44 +1,40 @@
 #include "pathfinder.h"
 
-static void pop_allConnect(t_path **head) {
-    t_path *next_conect = NULL;
+static void pop_allBond(t_path **head) {
+    if (!head || !(*head)) return;
 
-    if (!head || !(*head))
-        return;
-    while((*head)->nextConnect) {
-        next_conect = (*head)->nextConnect;
+    while ((*head)->nextConnect) {
+        t_path *p = (*head)->nextConnect;
         free(*head);
-        *head = next_conect;
+        *head = p;
     }
     if (!(*head)->nextConnect && !(*head)->nextPath) {
         free(*head);
         *head = NULL;
         return;
     }
-} // 13
+
+}
 
 static void pop_nextPath(t_path **head) {
-    t_path *next_conect = NULL;
-    
-    if (!head || !(*head))
-        return;
+    if (!head || !(*head)) return;
+
     if ((*head)->nextPath == NULL) {
         free(*head);
         *head = NULL;
         return;
     }
     else {
-        next_conect = (*head)->nextPath;
+        t_path *p = (*head)->nextPath;
         free(*head);
-        *head = next_conect;
-    }   
-} // 13
-
-void mx_dellPath(t_path **head) {
-    if (!head || !(*head))
-        return;
-    while (*head) {
-        pop_allConnect(&(*head));
-        pop_nextPath(&(*head));
+        *head = p;
     }
-} // 5
+}
+
+void mx_delPath(t_path **head) {
+	if (!head || !(*head)) return;
+    while(*head) {
+        pop_allBond(&(*head));
+    	pop_nextPath(&(*head));
+    }
+}

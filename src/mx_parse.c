@@ -1,25 +1,15 @@
 #include "pathfinder.h"
 
-void mx_parse(char *argv) {
+void mx_parse(char *fd, int ***matrix, char ***set) {
     char **arrarr = NULL;
-    char **set = NULL;
-    int **matrix = NULL;
-    char *fd = mx_file_to_str(argv);
-    char **src = NULL;
+    char **src = mx_strsplit(fd, '\n');
 
-    src = mx_strsplit(fd, '\n');
     mx_create_arr(src, &arrarr);
     // mx_print_strarr(arrarr, "\n"); // Print Arr
-    mx_create_set(&set, &arrarr, src[0]);
-    matrix = mx_matrix(&arrarr, set);
-    mx_del_strarr(&arrarr);
+    mx_create_set(&(*set), &arrarr, src[0]);
+    *matrix = mx_create_matrix(*set, &arrarr);
     mx_del_strarr(&src);
+    mx_del_strarr(&arrarr);
     // mx_print_strarr(set, "\n"); // Print Set
     // mx_print_matrix(matrix, set); //Priint Mat
-    mx_main_algoritm(matrix, set); // Print Algoritm
-    // system("leaks a.out");
-    mx_delMat(&matrix, set);
-    mx_del_strarr(&set);
-    mx_strdel(&fd);
-    // system("leaks a.out");
 } // 16
