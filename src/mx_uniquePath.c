@@ -28,7 +28,7 @@ int mx_uniquePath(t_path **new, t_path **current) {
 			if (flag == -1)
 				return -1;
 			if (oldOne)
-			flag = -1;
+				flag = -1;
 			continue;
 		}
 		compare(&path, &oldOne, &flag);

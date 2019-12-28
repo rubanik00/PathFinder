@@ -3,11 +3,9 @@
 void mx_delMat(int ***matrix, char **set) {
 	int **mat = *matrix;
 	int i = 0;
-	// int k = 0;
 
 	while(set[i])
 		i++;
-
 	while(i >= 0) {
 		free(*mat);
 		mat++;

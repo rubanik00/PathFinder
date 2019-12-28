@@ -16,15 +16,18 @@ static void mx_linearr(char *line, char **island1, char **island2, char **dist) 
 	int i = 0;
 	char *str = line;
 	
-	while(str[i] != '-') i++;
+	while(str[i] != '-') 
+		i++;
 	*island1 = mx_strndup(str, i);
 	str += i + 1;
 	i = 0;
-	while(str[i] != ',') i++;
+	while(str[i] != ',') 
+		i++;
 	*island2 = mx_strndup(str, i);
 	str += i + 1;
 	i = 0;
-	while(str[i] != '\0') i++;
+	while(str[i] != '\0') 
+		i++;
 	*dist = mx_strndup(str, i);
 }
 
@@ -49,14 +52,13 @@ static void mx_fill_islands(char ***arrarr, char **lines) {
 		mx_strdel(&dist);
 	}
 	*arr = NULL;
-} //19
+}
 
 void mx_create_arr(char **lines, char ***arrarr){
 	int line = 1;
 
-	while (lines[line]){
+	while (lines[line])
 		line++;
-	}
 	*arrarr = (char **)malloc((line * 3 + 1) * sizeof(char *));
 	mx_fill_islands(&(*arrarr), lines);
 }

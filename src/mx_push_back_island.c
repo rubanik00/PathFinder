@@ -4,9 +4,8 @@ void mx_push_back_island(t_island **island, t_path **path, int isl, int dist) {
 	t_island *new = mx_create_island(isl, dist);
 	t_island *last = *island;
 
-	if (path && *path) {
+	if (path && *path)
 		new->path = mx_copyPath(&(*path));
-	}
 	if (*island == NULL) {
 		*island = new;
 		return;

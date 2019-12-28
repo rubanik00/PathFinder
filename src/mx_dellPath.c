@@ -1,8 +1,8 @@
 #include "pathfinder.h"
 
 static void pop_allBond(t_path **head) {
-    if (!head || !(*head)) return;
-
+    if (!head || !(*head)) 
+        return;
     while ((*head)->nextConnect) {
         t_path *p = (*head)->nextConnect;
         free(*head);
@@ -17,8 +17,8 @@ static void pop_allBond(t_path **head) {
 }
 
 static void pop_nextPath(t_path **head) {
-    if (!head || !(*head)) return;
-
+    if (!head || !(*head)) 
+        return;
     if ((*head)->nextPath == NULL) {
         free(*head);
         *head = NULL;
@@ -32,7 +32,8 @@ static void pop_nextPath(t_path **head) {
 }
 
 void mx_delPath(t_path **head) {
-	if (!head || !(*head)) return;
+	if (!head || !(*head)) 
+        return;
     while(*head) {
         pop_allBond(&(*head));
     	pop_nextPath(&(*head));
