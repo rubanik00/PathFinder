@@ -57,7 +57,7 @@ static void addNextBond(t_char **prd, t_path *bond, char *distTo, char **set) {
 
 static void displayPath(t_path **disp, int distTo, char **set) {
 	t_path *bond = *disp;
-	t_char *prd = NULL;
+	t_char *prd = NULL; // зачистить
 	char *dist = mx_itoa(distTo);
 
 	while (bond) {
