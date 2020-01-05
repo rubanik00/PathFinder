@@ -9,7 +9,7 @@ static int mx_count_set(char **arr, char *nIslands) {
 	int count = 0;
 	int j = 0;
 
-	if(arr && *arr) {
+	if (arr && *arr) {
 		if (arr[0])
 			count++;
 		for (int i = 1; arr[i] != NULL; i++) {
@@ -70,6 +70,7 @@ static void mx_set(char ***set, char ***arrarr) {
 
 void mx_create_set(char ***set, char ***arrarr, char *nIslands) {
 	int count = mx_count_set(*arrarr, nIslands);
+	
 	*set = (char **)malloc((count + 1) * sizeof(char *));
 	**set = NULL;
 	mx_set(&(*set), &(*arrarr));

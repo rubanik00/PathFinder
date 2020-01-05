@@ -1,11 +1,13 @@
 #include "pathfinder.h"
 
 static void mx_print_invalid(int nline) {
+	char *index = NULL;
+
 	nline++;
-	char *index = mx_itoa(nline);
+	index = mx_itoa(nline);
 	mx_printerr("error: line ");
 	mx_printerr(index);
-	mx_printerr_exit(" isn't valid\n");
+	mx_printerr_exit(" is not valid\n");
 }
 
 void mx_check_spaces(char **lines, char *file) {

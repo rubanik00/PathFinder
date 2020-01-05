@@ -1,18 +1,20 @@
   #include "pathfinder.h"
 
 static void mx_print_invalid(int nline) {
+	char *index = NULL;
+
 	nline++;
-	char *index = mx_itoa(nline);
+	index = mx_itoa(nline);
 	mx_printerr("error: line ");
 	mx_printerr(index);
-	mx_printerr_exit(" isn't valid\n");
+	mx_printerr_exit(" is not valid\n");
 }
 
 static void part_check(char **lines, int n, int copy_i, int i) {
 	while (mx_isdigit(lines[n][copy_i]))
-			copy_i++;
-		if (copy_i - i == 0 || lines[n][copy_i] != '\0') 
-			mx_print_invalid(n);
+		copy_i++;
+	if (copy_i - i == 0 || lines[n][copy_i] != '\0') 
+		mx_print_invalid(n);
 }
 
 static void mx_checkline(char **lines, int nline) {
@@ -40,15 +42,16 @@ static void mx_checkline(char **lines, int nline) {
 
 static void mx_parserr(char *file) {
 	char **lines = mx_strsplit(file, '\n');
-	int nline = 0, at = 0;
+	int nline = 0;
+	int at = 0;
 	
 	while (lines[nline]) 
 		nline++;
 	if (lines[0][0] == '0')
-		mx_printerr_exit("error: zero isn't allowed\n");
+		mx_printerr_exit("error: zero is not allowed\n");
 	while (lines[0][at]) {
 		if (!mx_isdigit(lines[0][at]))
-			mx_printerr_exit("error: line 1 isn't valid\n");
+			mx_printerr_exit("error: line 1 is not valid\n");
 		at++;
 	}
 	mx_checkline(lines, nline-1);
@@ -62,7 +65,7 @@ void mx_test_err(int argc, char *file, char **argv) {
 	if (!file) {
 		 mx_printerr("error: file ");
 		 mx_printerr(argv[1]);
-		 mx_printerr_exit(" doesn't exist\n");
+		 mx_printerr_exit(" does not exist\n");
 	}
 	if (mx_strlen(file) == 0) {
 		mx_printerr("error: file ");

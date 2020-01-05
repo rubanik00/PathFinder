@@ -1,9 +1,9 @@
 #include "pathfinder.h"
 
-static void check_island12(char *island1, char *island2, char *dist, int nline) {
+static void check_island12(char *island1, char *island2, char *dis, int nline) {
 	char *index = NULL;
 
-	if (mx_strcmp(island1,island2) == 0 && mx_atoi(dist) != 0) {
+	if (mx_strcmp(island1,island2) == 0 && mx_atoi(dis) != 0) {
 		nline++;
 		index = mx_itoa(nline);
 		mx_printerr("error: line ");
@@ -12,7 +12,7 @@ static void check_island12(char *island1, char *island2, char *dist, int nline) 
 	}
 }
 
-static void mx_linearr(char *line, char **island1, char **island2, char **dist) {
+static void mx_linearr(char *line, char **island1, char **island2, char **dis) {
 	int i = 0;
 	char *str = line;
 	
@@ -28,15 +28,14 @@ static void mx_linearr(char *line, char **island1, char **island2, char **dist) 
 	i = 0;
 	while(str[i] != '\0') 
 		i++;
-	*dist = mx_strndup(str, i);
+	*dis = mx_strndup(str, i);
 }
 
-static void mx_fill_islands(char ***arrarr, char **lines) {
+static void mx_fill_islands(char ***arrarr, char **lines, int line) {
 	char **arr = *arrarr;
 	char *island1 = NULL;
 	char *island2 = NULL;
 	char *dist = NULL;
-	int line = 1;
 
 	while(lines[line]) {
 		mx_linearr(lines[line], &island1, &island2, &dist);
@@ -48,7 +47,8 @@ static void mx_fill_islands(char ***arrarr, char **lines) {
 		arr++;
 		mx_strdel(&island2);
 		*arr = mx_strdup(dist);
-		line++, arr++;
+		line++;
+		arr++;
 		mx_strdel(&dist);
 	}
 	*arr = NULL;
@@ -60,5 +60,5 @@ void mx_create_arr(char **lines, char ***arrarr){
 	while (lines[line])
 		line++;
 	*arrarr = (char **)malloc((line * 3 + 1) * sizeof(char *));
-	mx_fill_islands(&(*arrarr), lines);
+	mx_fill_islands(&(*arrarr), lines, 1);
 }

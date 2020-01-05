@@ -1,6 +1,8 @@
 #include "pathfinder.h"
 
 void mx_pop_front_island(t_island **head) {
+    t_island *p = NULL;
+    
     if (!head || !(*head)) 
         return;
     if ((*head)->next == NULL) {
@@ -9,7 +11,7 @@ void mx_pop_front_island(t_island **head) {
         return;
     }
     else {
-        t_island *p = (*head)->next;
+        p = (*head)->next;
         free(*head);
         *head = p;
     }

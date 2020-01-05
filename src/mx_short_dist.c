@@ -7,7 +7,7 @@ t_island *mx_short_dist(t_island **unvisited) {
 	if (unvisited || *unvisited) {
 		head = *unvisited;
 		shortest = *unvisited;
-		while(head) {
+		while (head) {
 			if (head->distTo != 0) 
 			if (shortest->distTo > head->distTo || !shortest->distTo)
 				shortest = head;

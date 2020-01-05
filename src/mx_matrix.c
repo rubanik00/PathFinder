@@ -1,11 +1,13 @@
 #include "pathfinder.h"
-// ??? 5 elementov
-static void mx_fill(char **set, char **arrarr, int ***matrix, int i, int j) { // number of elements ???
+
+static void mx_fill(char **set, char **arrarr, int ***matrix, t_int *in) {
 	int **mat = *matrix;
 	int k = 0;
+	int i = in->size;
+	int j = in->root;
 
-	if(mx_isdigit(arrarr[j + 1][0])) {
-		while(mx_strcmp(set[k], arrarr[j-1]) != 0)
+	if (mx_isdigit(arrarr[j + 1][0])) {
+		while (mx_strcmp(set[k], arrarr[j-1]) != 0)
 			k++;
 		if (!mat[i][k] || mat[i][k] < mx_atoi(arrarr[j+1]))
 			mat[i][k] = mx_atoi(arrarr[j+1]);
@@ -19,19 +21,21 @@ static void mx_fill(char **set, char **arrarr, int ***matrix, int i, int j) { //
 }
 
 static void mx_mat(char **set, char **arrarr, int ***matrix) {
-	int i = 0;
-	int j = 0;
+	t_int *i = malloc(sizeof(t_int));
+	i->size = 0;
 
-	while(set[i]) {
-		j = 0;
-		while(arrarr[j]) {
-			if(mx_strcmp(set[i], arrarr[j]) == 0) {
-				mx_fill(set, arrarr, &(*matrix), i, j);
+	while(set[i->size]) {
+		i->root = 0;
+		while(arrarr[i->root]) {
+			if(mx_strcmp(set[i->size], arrarr[i->root]) == 0) {
+				mx_fill(set, arrarr, &(*matrix), i);
 			}
-			j++;
+			i->size += 1;
 		}
-		i++;
+		i->size += 1;
 	}
+	free(i);
+	i = NULL;
 }
 
 int **mx_create_matrix(char **set, char ***arrarr) {

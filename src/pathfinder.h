@@ -18,6 +18,7 @@ void mx_delMat(int ***matrix, char **set);
 typedef struct s_path {
     int idPath;
     int distPath;
+    int index;
     struct s_path *nextConnect;
     struct s_path *nextPath;
 }		t_path;
@@ -36,9 +37,28 @@ typedef struct s_char {
 	int s;
 }		t_char;
 
+typedef struct s_int {
+	int size;
+	int root;
+}		t_int;
+
+typedef struct s_md {
+	int isl1;
+	int isl2;
+	int mat;
+}		t_md;
+
+typedef struct s_li{
+	t_island *un;
+	t_island *v;
+	t_island *cur;
+	t_island *sh;
+}		t_li;
+
 t_island *mx_short_dist(t_island **unvisited);
 t_path *mx_create_path(int isl, int dist);
-void mx_push_backPath(t_path **path, t_path **previous, int isl, int dist);void mx_addLink(t_path **cur, t_path **new);
+void mx_push_backPath(t_path **path, t_path **previous, int isl, int dist);
+void mx_addLink(t_path **cur, t_path **new);
 t_path *mx_addPath(t_path **previous, int isl, int dist);
 void mx_delPath(t_path **head);
 t_path *mx_copyPath(t_path **data);
@@ -48,8 +68,11 @@ void mx_printOutput(t_island **visited, int root, int size, char **set);
 void mx_addLink(t_path **cur, t_path **new);
 t_path *mx_addOnePath(t_path **previous, int isl, int dist);
 t_island *mx_create_island(int isl, int dist);
-void mx_push_back_island(t_island **island, t_path **path, int isl, int dist);
+void mx_pbi(t_island **island, t_path **path, int isl, int dist);
 void mx_pop_front_island(t_island **head);
 void mx_pop_middle_island(t_island **unvisited, int index);
+void mx_sortPath(t_path **disp, int sizeP);
+int mx_addIndexPathes(t_path **path);
+t_li *mx_create_l();
 
 #endif

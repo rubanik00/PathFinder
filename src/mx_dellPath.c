@@ -17,6 +17,8 @@ static void pop_allBond(t_path **head) {
 }
 
 static void pop_nextPath(t_path **head) {
+    t_path *p = NULL;
+
     if (!head || !(*head)) 
         return;
     if ((*head)->nextPath == NULL) {
@@ -25,7 +27,7 @@ static void pop_nextPath(t_path **head) {
         return;
     }
     else {
-        t_path *p = (*head)->nextPath;
+        p = (*head)->nextPath;
         free(*head);
         *head = p;
     }

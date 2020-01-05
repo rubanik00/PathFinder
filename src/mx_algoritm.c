@@ -1,81 +1,90 @@
 #include "pathfinder.h"
 
-static void main_algo(int **matrix, char **set, int root, int size) {
-	t_island *unvisited = NULL; // лист непройденных нод
-	t_island *visited = NULL; // лист пройденных нод
-	t_island *current = NULL;
-	t_island *shortest = NULL;
-	t_island *head = NULL;
-	int isl1 = 0;
-	int isl2 = 0;
-	int mat = 0;
+static void st(t_island **un, t_island **cur, t_island **v, t_int *in) { // 
+	*un = NULL;
+	*v = NULL;
+	for (int i = 0; i < in->size; i++)
+		mx_pbi(&(*un), NULL, i, 0); // пустые ноды
+	*cur = *un;
+	while ((*cur)->indexIslnd != in->root)
+		*cur = (*cur)->next;
+	(*cur)->path = mx_create_path(in->root, 0);
+	mx_pbi(&(*v), &(*cur)->path, (*cur)->indexIslnd, (*cur)->distTo);
+	mx_pop_middle_island(&(*un), in->root);
+	*cur = *v;
+}
 
-	for(int i = 0; i < size; i++) {
-		mx_printstr(set[i]);
-		mx_printstr(" -- ");
-		mx_printint(i);
-		mx_printchar('\n');
-	}
+static void md (t_island **un, t_island **cur, int **mat, t_md **m) { // Matrix dist
+	t_island *h = *un;
 
-	for (int i = 0; i < size; i++)
-		mx_push_back_island(&unvisited, NULL, i, 0);
-	current = unvisited;
-	while(current->indexIslnd != root)
-		current = current->next;
-	current->path = mx_create_path(root, 0);
-	mx_push_back_island(&visited, &current->path, 
-	current->indexIslnd, current->distTo);
-	mx_pop_middle_island(&unvisited, root);
-	current = visited;
-
-	while (unvisited) {
-		head = unvisited;
-		while (head != NULL) {
-			isl1 = current->indexIslnd;
-			isl2 = head->indexIslnd;
-			mat = matrix[isl1][isl2];
-
-			if (mat != 0 && head->distTo == 0) {
-				head->distTo = current->distTo + mat;
-				head->path = mx_addPath(&current->path, isl2, mat);
-			} else if (mat != 0) {
-				if (current->distTo + mat == head->distTo)
-					mx_push_backPath(&head->path, &current->path, isl2, mat);
-				if (current->distTo + mat < head->distTo) {
-					head->distTo = current->distTo + mat;
-					mx_delPath(&head->path);
-					head->path = mx_addPath(&current->path, isl2, mat);
-				}
+	while (h != NULL) {
+		(*m)->isl1 = (*cur)->indexIslnd;
+		(*m)->isl2 = h->indexIslnd;
+		(*m)->mat = mat[(*m)->isl1][(*m)->isl2];
+		if ((*m)->mat != 0 && h->distTo == 0) {
+			h->distTo = (*cur)->distTo + (*m)->mat;
+			h->path = mx_addPath(&(*cur)->path, (*m)->isl2, (*m)->mat);
+		} else if ((*m)->mat != 0) {
+			if ((*cur)->distTo + (*m)->mat == h->distTo)
+			mx_push_backPath(&h->path, &(*cur)->path, (*m)->isl2, (*m)->mat);
+			if ((*cur)->distTo + (*m)->mat < h->distTo) {
+				h->distTo = (*cur)->distTo + (*m)->mat;
+				mx_delPath(&h->path);
+				h->path = mx_addPath(&(*cur)->path, (*m)->isl2, (*m)->mat);
 			}
-			head = head->next;
 		}
-		shortest = mx_short_dist(&unvisited);
-		mx_push_back_island(&visited, &shortest->path, 
-		shortest->indexIslnd, shortest->distTo);
-		mx_pop_middle_island(&unvisited, shortest->indexIslnd);
-		current = current->next;
-		if (current->path == NULL) {
-			// mx_delMat(&matrix, set);
-			mx_printerr("error: combination of two ");
-			mx_printerr_exit("islands has not a path between them\n");
-		}
+		h = h->next;
 	}
-	// mx_printOutput(&visited, root+1, size, set);
-	while (visited != NULL)
-	{
-		mx_delPath(&visited->path);
-		mx_pop_front_island(&visited);
+}
+
+static void lt(t_li **l, int **matrix, char **set) { // List Island
+	(*l)->sh = mx_short_dist(&(*l)->un);
+	mx_pbi(&(*l)->v, &(*l)->sh->path, (*l)->sh->indexIslnd, (*l)->sh->distTo);
+	mx_pop_middle_island(&(*l)->un, (*l)->sh->indexIslnd);
+	(*l)->cur = (*l)->cur->next;
+	if ((*l)->cur->path == NULL) {
+		matrix[0][0] = 0;
+		set[0] = set[0];
+		// mx_delMat(&matrix, set);
+		mx_printerr("error: combination of two ");
+		mx_printerr_exit("islands has not a path between them\n");
 	}
-} // 57
+}
+
+static void main_algo(int **matrix, char **set, t_int *in) {
+	t_li *l = mx_create_l();
+	t_md *m	= NULL;
+
+	st(&l->un, &l->cur, &l->v, in);
+	while (l->un && l->un != NULL) {
+		m = malloc(sizeof(t_md));
+		md(&l->un, &l->cur, matrix, &m);
+		free(m);
+		m = NULL;
+		lt(&l, matrix, set);
+	}
+	mx_printOutput(&l->v, in->root+1, in->size, set);
+	while (l->v != NULL) {
+		mx_delPath(&l->v->path);
+		mx_pop_front_island(&l->v);
+	}
+	free(l);
+	l = NULL;
+}
 
 void mx_algoritm(int **matrix, char **set) {
 	int size = 0;
-
 	int i = 0;
+	t_int *in = malloc(sizeof(t_int));
+
 	while (set[size]) 
 		size++;
-	 while (i < size - 1) {
-		main_algo(matrix, set, i, size);
+	in->size = size;
+	while (i < size - 1) {
+		in->root = i;
+		main_algo(matrix, set, in);
 		i++;
-	 }
+	}
+	free(in);
+	in = NULL;
 }
