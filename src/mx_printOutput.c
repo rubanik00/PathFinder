@@ -57,7 +57,7 @@ static void addNextBond(t_char **prd, t_path *bond, char *distTo, char **set) {
 
 static void displayPath(t_path **disp, int distTo, char **set) {
 	t_path *bond = *disp;
-	t_char *prd = NULL; // зачистить
+	t_char *prd = NULL;
 	char *dist = mx_itoa(distTo);
 
 	while (bond) {
@@ -71,6 +71,7 @@ static void displayPath(t_path **disp, int distTo, char **set) {
 		printLine(&prd);
 		bond = bond->nextPath;
 	}
+	mx_strdel(&dist);
 }
 
 void mx_printOutput(t_island **visited, int root, int size, char **set) {
