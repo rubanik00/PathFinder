@@ -25,7 +25,7 @@ static void swpD(t_path **disp, t_path **bond, t_path **fast) {
 	if (*disp == *bond)
 		*disp = *fast;
 	else {
-		while(cur && cur->nextPath != *bond)
+		while (cur && cur->nextPath != *bond)
 			cur = cur->nextPath;
 		mx_addLink(&cur, &(*fast));
 	}
@@ -43,7 +43,7 @@ static void swp(t_path **disp, t_path **bond, t_path **fast) {
 		if (*disp == *bond)
 			*disp = *fast;
 		else {
-			while(cur && cur->nextPath != *bond)
+			while (cur && cur->nextPath != *bond)
 				cur = cur->nextPath;
 			mx_addLink(&cur, &(*fast));
 		}
@@ -56,10 +56,10 @@ void mx_sortPath(t_path **disp, int sizeP) {
 	t_path *bond = *disp;
 	t_path *fast = (*disp)->nextPath;
 
-	for(int i = 0; i < sizeP; i++) {
+	for (int i = 0; i < sizeP; i++) {
 		for (bond = *disp; bond->index != i; bond = bond->nextPath)
 			fast = bond->nextPath;
-		while(fast) {
+		while (fast) {
 			if (cmp(bond, fast) == 1) {
 				swp(&(*disp), &bond, &fast);
 				for (bond = *disp; bond->index != i; bond = bond->nextPath)

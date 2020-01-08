@@ -27,7 +27,7 @@ static t_char *createprd(t_path *bond, char **set) {
 	prd->r = mx_strdup("Route: ");
 	mx_join(&(*prd).r, set[bond->idPath]);
 	prd->d = mx_strdup("Distance: ");
-	for(; bond; bond = bond->nextConnect)
+	for (; bond; bond = bond->nextConnect)
 		i++;
 	prd->s = i;
 	return prd;
@@ -78,7 +78,7 @@ void mx_printOutput(t_island **visited, int root, int size, char **set) {
 	t_island *current = NULL;
 	int sizeP;
 
-	for(; root < size; root++) {
+	for (; root < size; root++) {
 		current = *visited;
 		while (current->indexIslnd != root)
 			current = current->next;

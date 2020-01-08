@@ -17,9 +17,9 @@ static void step(t_path **oldOne, t_path **path, t_path **new) {
 }
 
 int mx_uniquePath(t_path **new, t_path **current) {
-	int flag = -1;
 	t_path *path = *new;
 	t_path *oldOne = *current;
+	int flag = -1;
 
 	while (oldOne) {
 		if (oldOne->nextConnect == NULL || !path) {

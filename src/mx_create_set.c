@@ -33,7 +33,7 @@ static int mx_flag(char *arr, char **set1) {
 	int j = 0;
 	int flag = 0;
 
-	while(set1[j]) {
+	while (set1[j]) {
 		if (mx_strcmp(arr, set1[j]) == 0) {
 			flag++;
 			break;

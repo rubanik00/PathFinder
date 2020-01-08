@@ -1,10 +1,10 @@
 #include "pathfinder.h"
 
-static void st(t_island **un, t_island **cur, t_island **v, t_int *in) { // 
+static void st(t_island **un, t_island **cur, t_island **v, t_int *in) {
 	*un = NULL;
 	*v = NULL;
 	for (int i = 0; i < in->size; i++)
-		mx_pbi(&(*un), NULL, i, 0); // пустые ноды
+		mx_pbi(&(*un), NULL, i, 0);
 	*cur = *un;
 	while ((*cur)->indexIslnd != in->root)
 		*cur = (*cur)->next;
@@ -14,7 +14,7 @@ static void st(t_island **un, t_island **cur, t_island **v, t_int *in) { //
 	*cur = *v;
 }
 
-static void md (t_island **un, t_island **cur, int **mat, t_md **m) { // Matrix dist
+static void md (t_island **un, t_island **cur, int **mat, t_md **m) {
 	t_island *h = *un;
 
 	while (h != NULL) {
@@ -37,14 +37,12 @@ static void md (t_island **un, t_island **cur, int **mat, t_md **m) { // Matrix 
 	}
 }
 
-static void lt(t_li **l, int **matrix, char **set) { // List Island
+static void lt(t_li **l, int **matrix, char **set) {
 	(*l)->sh = mx_short_dist(&(*l)->un);
 	mx_pbi(&(*l)->v, &(*l)->sh->path, (*l)->sh->indexIslnd, (*l)->sh->distTo);
 	mx_pop_middle_island(&(*l)->un, (*l)->sh->indexIslnd);
 	(*l)->cur = (*l)->cur->next;
 	if ((*l)->cur->path == NULL) {
-		// matrix[0][0] = 0;
-		// set[0] = set[0];
 		mx_delMat(&matrix, set);
 		mx_printerr("error: combination of two ");
 		mx_printerr_exit("islands has not a path between them\n");

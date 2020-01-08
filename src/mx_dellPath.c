@@ -1,10 +1,12 @@
 #include "pathfinder.h"
 
 static void pop_allBond(t_path **head) {
+    t_path *p = NULL;
+
     if (!head || !(*head)) 
         return;
     while ((*head)->nextConnect) {
-        t_path *p = (*head)->nextConnect;
+        p = (*head)->nextConnect;
         free(*head);
         *head = p;
     }
