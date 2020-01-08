@@ -19,4 +19,4 @@ t_list *mx_sort_list(t_list *list, bool (*cmp)(void *a, void *b)) {
         list = list->next;
     }
     return tmp;
-} // 19
+}

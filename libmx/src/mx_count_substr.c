@@ -9,7 +9,7 @@ int mx_count_substr(const char *str, const char *sub) {
 	len = mx_strlen(sub);
 	if (len == 0) 
 		return 0;
-	for (str = mx_strstr(str, sub); str; str = mx_strstr(str + len, sub)) 
+	for (str = mx_strstr(str, sub); str; str = mx_strstr(str + len, sub))
 		counter++;
 	return counter;
 }

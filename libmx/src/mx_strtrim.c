@@ -2,6 +2,7 @@
 
 char *mx_strtrim(const char *str) {
 	int len = mx_strlen(str);
+	char *dst = NULL;
 	
 	if (!str) 
 		return NULL;
@@ -11,7 +12,7 @@ char *mx_strtrim(const char *str) {
 		str++;
 		len--;	
 	}
-	char *dst = mx_strnew(len); 
+	dst = mx_strnew(len); 
 	mx_strncpy(dst, str, len);
 	return dst;
 }

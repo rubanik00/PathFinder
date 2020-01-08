@@ -11,6 +11,5 @@ int main (int argc, char *argv[]) {
     mx_delMat(&matrix, set);
     mx_strdel(&file);
     mx_del_strarr(&set);
-    system("leaks a.out");
     return 0;
 }

@@ -3,7 +3,7 @@
 static int res(const char *str, int i,int sign) {
 	int result = 0;
 
-	while(str[++i])
+	while (str[++i])
 		if (mx_isdigit(str[i]))
 			result = result * 10 + str[i] - '0';
 		if (!mx_isdigit(str[i]))

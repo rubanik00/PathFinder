@@ -10,7 +10,9 @@ void *mx_memccpy(void *restrict dst, const void *restrict src, int c, size_t n) 
             d++;
             return d;
         }
-        d++, s++, n--;
+        d++;
+        s++;
+        n--;
     }
     return NULL;
 }

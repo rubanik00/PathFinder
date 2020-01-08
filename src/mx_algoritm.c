@@ -43,9 +43,9 @@ static void lt(t_li **l, int **matrix, char **set) { // List Island
 	mx_pop_middle_island(&(*l)->un, (*l)->sh->indexIslnd);
 	(*l)->cur = (*l)->cur->next;
 	if ((*l)->cur->path == NULL) {
-		matrix[0][0] = 0;
-		set[0] = set[0];
-		// mx_delMat(&matrix, set);
+		// matrix[0][0] = 0;
+		// set[0] = set[0];
+		mx_delMat(&matrix, set);
 		mx_printerr("error: combination of two ");
 		mx_printerr_exit("islands has not a path between them\n");
 	}

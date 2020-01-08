@@ -22,4 +22,4 @@ char *mx_replace_substr(const char *str, const char *sub, const char *replace) {
         }
     }
     return copy_str2;
-} // 22
+}
