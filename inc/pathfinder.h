@@ -3,18 +3,6 @@
 
 #include "libmx.h"
 
-void mx_test_err(int argc, char *file, char **argv);
-void mx_printerr(const char *s);
-void mx_parse(char *fd, int ***matrix, char ***set);
-int **mx_create_matrix(char **set, char ***arrarr);
-void mx_print_matrix(int **matrix, char **set);
-void mx_algoritm(int **matrix, char **set);
-void mx_printerr_exit(const char *s);
-void mx_check_spaces(char **src, char *file);
-void mx_create_arr(char **src, char ***arrarr);
-void mx_create_set(char ***set, char ***arrarr, char *numOfIsland);
-void mx_delMat(int ***matrix, char **set);
-
 typedef struct s_path {
     int idPath;
     int distPath;
@@ -31,30 +19,41 @@ typedef struct s_island {
 }		t_island;
 
 typedef struct s_char {
-	char *p;
-	char *r;
-	char *d;
-	int s;
+    char *p;
+    char *r;
+    char *d;
+    int s;
 }		t_char;
 
 typedef struct s_int {
-	int size;
-	int root;
+    int size;
+    int root;
 }		t_int;
 
 typedef struct s_md {
-	int isl1;
-	int isl2;
-	int mat;
+    int isl1;
+    int isl2;
+    int mat;
 }		t_md;
 
 typedef struct s_li{
-	t_island *un;
-	t_island *v;
-	t_island *cur;
-	t_island *sh;
+    t_island *un;
+    t_island *v;
+    t_island *cur;
+    t_island *sh;
 }		t_li;
 
+void mx_test_err(int argc, char *file, char **argv);
+void mx_printerr(const char *s);
+void mx_parse(char *fd, int ***matrix, char ***set);
+int **mx_create_matrix(char **set, char ***arrarr);
+void mx_print_matrix(int **matrix, char **set);
+void mx_algoritm(int **matrix, char **set);
+void mx_printerr_exit(const char *s);
+void mx_check_spaces(char **src, char *file);
+void mx_create_arr(char **src, char ***arrarr);
+void mx_create_set(char ***set, char ***arrarr, char *numOfIsland);
+void mx_delMat(int ***matrix, char **set);
 t_island *mx_short_dist(t_island **unvisited);
 t_path *mx_create_path(int isl, int dist);
 void mx_push_backPath(t_path **path, t_path **previous, int isl, int dist);

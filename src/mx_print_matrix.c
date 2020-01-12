@@ -5,9 +5,9 @@ void mx_print_matrix(int **matrix, char **set) {
     int k = 0;
     int j = 0;
 
-    while(set[i]) 
+    while (set[i]) 
         i++;
-    while(k < i) {
+    while (k < i) {
         j = 0;
         while (j < i) {
             mx_printint(matrix[k][j]);

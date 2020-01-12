@@ -36,10 +36,10 @@ static void pop_nextPath(t_path **head) {
 }
 
 void mx_delPath(t_path **head) {
-	if (!head || !(*head)) 
+    if (!head || !(*head)) 
         return;
     while(*head) {
         pop_allBond(&(*head));
-    	pop_nextPath(&(*head));
+        pop_nextPath(&(*head));
     }
 }
