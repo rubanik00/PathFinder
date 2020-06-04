@@ -5,7 +5,7 @@
     <a href="https://ucode.world/en/" target="_blank">
         <img src="https://github.com/slava-pleshkov/unit-factory-ucode/blob/master/.git_images/ucode_logo.png?raw=true" height="100px">
     </a>
-    <h1 align="center">unit-factory-ucode-pathfinder</h1>
+    <h1 align="center">PathFinder</h1>
     <br>
 </p>
 <p align="center">🔭 Learn pathfinding algorithms</p>
